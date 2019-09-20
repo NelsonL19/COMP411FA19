@@ -5,4 +5,4 @@ add $s2, $t1, $s4
 
 addi $s2, $s2, 100
 
-add $zero, $s2, $t1
+
