@@ -83,11 +83,25 @@ int main( int argc, char** argv ) {
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
 
 
-				char rsReg = s_registers[rs] + '0';
-				char rtReg = s_registers[rt] + '0';
+				char rsReg[17];
+				char rtReg[17];
+				char newReg[17];
+				short newValA; //16 bits
+				short newValB; //16 bits
 
-				printf("%c", rtReg);
 
+				sprintf(rsReg, "%c", (s_registers[rs] + '0'));
+				sprintf(rtReg, "%c", (s_registers[rt] + '0'));
+
+
+				for (int i = 0; i < 17; i++) {
+					if (rsReg[i] == 1 && rtReg[i] == 1) {
+						newReg[i] = 1;
+					} else {
+						newReg[i] = 0;
+					}
+
+				}
 
 
 				break;
