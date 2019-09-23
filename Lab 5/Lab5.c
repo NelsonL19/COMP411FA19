@@ -83,13 +83,10 @@ int main( int argc, char** argv ) {
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
 
 
-
+				char rsReg = s_registers[rs] + '0';
 				char rtReg = s_registers[rt] + '0';
-				
 
-
-
-
+				printf("%c", rtReg);
 
 
 
@@ -102,37 +99,61 @@ int main( int argc, char** argv ) {
 				scanf( "%d", &rs );
 				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
 				scanf( "%d", &rt );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, OR_FUNC);
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
 
 
 				//rest of OR Case
 
 
-				
-
-				//if (test == 1) {
-
-				//	s_registers[rd] = s_registers[rt] + s_registers[rt];			
-				//}
 
 				break;
 				
 
 			case NOR:
-				// TODO: You complete the code for this operation
-				
+				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				scanf( "%d", &rd );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				scanf( "%d", &rs );
+				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				scanf( "%d", &rt );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
+
+
+
+
 				break;
 				
 
 			case SLL:
-				// TODO: You complete the code for this operation
+
+				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				scanf( "%d", &rd );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
+				scanf( "%d", &rs );
+				printf( "Which register [0,1,2,3,4,5] is the shift amount (sa): ");
+				scanf( "%d", &sa );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, SLL_FUNC);
+
+
+
 
 				break;
 				
 
 			case SRL:
-				// TODO: You complete the code for this operation
 				
+				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				scanf( "%d", &rd );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
+				scanf( "%d", &rs );
+				printf( "Which register [0,1,2,3,4,5] is the shift amount (sa): ");
+				scanf( "%d", &sa );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, SRL_FUNC);
+
+
+
+
+
 				break;
 
 			default:
