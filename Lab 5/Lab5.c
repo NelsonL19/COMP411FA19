@@ -74,12 +74,12 @@ int main( int argc, char** argv ) {
 				break;
 
 			case AND:
-				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
-				scanf( "%d", &rd );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
 				scanf( "%d", &rs );
-				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
 				scanf( "%d", &rt );
+				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
+				scanf( "%d", &rd );
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
 
 
@@ -90,19 +90,17 @@ int main( int argc, char** argv ) {
 				//sprintf(rsReg, "%4X", (s_registers[rs] + '0'));
 				//sprintf(rtReg, "%4X", (s_registers[rt] + '0'));
 
-
-
-
+				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
 				break;
 
 			case OR:
-				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
-				scanf( "%d", &rd );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
 				scanf( "%d", &rs );
-				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
 				scanf( "%d", &rt );
+				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
+				scanf( "%d", &rd );
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
 
 
@@ -110,20 +108,25 @@ int main( int argc, char** argv ) {
 
 				s_registers[rd] = s_registers[rs] | s_registers[rt];
 
+				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
+
+
 				break;
 				
 
 			case NOR:
-				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
-				scanf( "%d", &rd );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
 				scanf( "%d", &rs );
-				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
 				scanf( "%d", &rt );
+				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
+				scanf( "%d", &rd );
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
 
-
+ 
 				s_registers[rd] = ~(s_registers[rs] |  s_registers[rt]);
+
+				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
 				break;
 				
