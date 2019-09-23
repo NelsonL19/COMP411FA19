@@ -83,10 +83,8 @@ int main( int argc, char** argv ) {
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
 
 
-				char rsReg[17];
-				char rtReg[17];
-				char newReg[17];
-				
+				s_registers[rd] = s_registers[rs] & s_registers[rt];
+
 
 
 				//sprintf(rsReg, "%4X", (s_registers[rs] + '0'));
@@ -110,7 +108,7 @@ int main( int argc, char** argv ) {
 
 				//rest of OR Case
 
-
+				s_registers[rd] = s_registers[rs] | s_registers[rt];
 
 				break;
 				
@@ -125,7 +123,7 @@ int main( int argc, char** argv ) {
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
 
 
-
+				s_registers[rd] = ~(s_registers[rs] |  s_registers[rt]);
 
 				break;
 				
@@ -139,6 +137,7 @@ int main( int argc, char** argv ) {
 				printf( "Which register [0,1,2,3,4,5] is the shift amount (sa): ");
 				scanf( "%d", &sa );
 				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, SLL_FUNC);
+
 
 
 
