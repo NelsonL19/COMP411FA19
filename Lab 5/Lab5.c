@@ -86,22 +86,14 @@ int main( int argc, char** argv ) {
 				char rsReg[17];
 				char rtReg[17];
 				char newReg[17];
-				short newValA; //16 bits
-				short newValB; //16 bits
+				
 
 
-				sprintf(rsReg, "%c", (s_registers[rs] + '0'));
-				sprintf(rtReg, "%c", (s_registers[rt] + '0'));
+				//sprintf(rsReg, "%4X", (s_registers[rs] + '0'));
+				//sprintf(rtReg, "%4X", (s_registers[rt] + '0'));
 
 
-				for (int i = 0; i < 17; i++) {
-					if (rsReg[i] == 1 && rtReg[i] == 1) {
-						newReg[i] = 1;
-					} else {
-						newReg[i] = 0;
-					}
 
-				}
 
 
 				break;
