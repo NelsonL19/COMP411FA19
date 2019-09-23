@@ -14,10 +14,10 @@
 #define AND_FUNC 36
 
 // TODO: You complete the rest
-// #define OR_FUNC 
-// #define NOR_FUNC
-// #define SLL_FUNC
-// #define SRL_FUNC
+#define OR_FUNC 37
+#define NOR_FUNC 39
+#define SLL_FUNC 0
+#define SRL_FUNC 2
 
 // used for debugging 
 void show_register_values( int*, int );
@@ -27,7 +27,7 @@ int main( int argc, char** argv ) {
 	// lets create some variables that regpresent the three different registers
 	// (rs = source, rt = target, and rd = destination) used in R and I type 
 	// instructions.
-	int rs, rt, rd;
+	int rs, rt, rd, sa;
 	int s_registers[6] = { 0, 0, 0, 0, 0, 0 }; // our simulator has 5 general purpose 32 bit registers
 	int operation;
 	int reg_selection;
@@ -74,14 +74,49 @@ int main( int argc, char** argv ) {
 				break;
 
 			case AND:
-				// TODO: You complete the code for this operation
+				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				scanf( "%d", &rd );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				scanf( "%d", &rs );
+				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				scanf( "%d", &rt );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
+
+
+
+				char rtReg = s_registers[rt] + '0';
 				
+
+
+
+
+
+
+
 				break;
 
 			case OR:
-				// TODO: You complete the code for this operation
+				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				scanf( "%d", &rd );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the first source (rs) register: ");
+				scanf( "%d", &rs );
+				printf( "Which register [0,1,2,3,4,5] is the second source (rt) register: ");
+				scanf( "%d", &rt );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, OR_FUNC);
+
+
+				//rest of OR Case
+
+
 				
+
+				//if (test == 1) {
+
+				//	s_registers[rd] = s_registers[rt] + s_registers[rt];			
+				//}
+
 				break;
+				
 
 			case NOR:
 				// TODO: You complete the code for this operation
