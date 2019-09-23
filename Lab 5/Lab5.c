@@ -27,12 +27,12 @@ int main( int argc, char** argv ) {
 	// lets create some variables that regpresent the three different registers
 	// (rs = source, rt = target, and rd = destination) used in R and I type 
 	// instructions.
-	int rs, rt, rd, sa;
+	int rs, rt, rd;
 	int s_registers[6] = { 0, 0, 0, 0, 0, 0 }; // our simulator has 5 general purpose 32 bit registers
 	int operation;
 	int reg_selection;
 	short reg_value;
-	short shamt;		// see page 88 in the patterson and hennessy course textbook
+	short shamt = 0;		// see page 88 in the patterson and hennessy course textbook
 	int exit = 0;
 
 	printf( "------------------------------------------\n");
@@ -80,12 +80,10 @@ int main( int argc, char** argv ) {
 				scanf( "%d", &rt );
 				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
 				scanf( "%d", &rd );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, AND_FUNC);
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, shamt, AND_FUNC);
 
 
 				s_registers[rd] = s_registers[rs] & s_registers[rt];
-
-
 
 				//sprintf(rsReg, "%4X", (s_registers[rs] + '0'));
 				//sprintf(rtReg, "%4X", (s_registers[rt] + '0'));
@@ -101,7 +99,7 @@ int main( int argc, char** argv ) {
 				scanf( "%d", &rt );
 				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
 				scanf( "%d", &rd );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, shamt, NOR_FUNC);
 
 
 				//rest of OR Case
@@ -121,7 +119,7 @@ int main( int argc, char** argv ) {
 				scanf( "%d", &rt );
 				printf( "Which register [0,1,2,3,4,5] is the destination (rd) register: ");
 				scanf( "%d", &rd );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, NOR_FUNC);
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, shamt, NOR_FUNC);
 
  
 				s_registers[rd] = ~(s_registers[rs] |  s_registers[rt]);
@@ -133,34 +131,38 @@ int main( int argc, char** argv ) {
 
 			case SLL:
 
-				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
+				scanf( "%d", &rt );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the destination (rd) register: ");
 				scanf( "%d", &rd );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
-				scanf( "%d", &rs );
-				printf( "Which register [0,1,2,3,4,5] is the shift amount (sa): ");
-				scanf( "%d", &sa );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, SLL_FUNC);
+				printf( "Enter left bit-shift amount (sa): ");
+				scanf( "%hd", &shamt );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, shamt, SLL_FUNC);
 
+				s_registers[rd] = s_registers[rt] <<  shamt;
 
+				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
-
+				shamt = 0;
 
 				break;
 				
 
 			case SRL:
 				
-				printf( "Which register [0,1,2,3,4,5] is the target (rd) register: ");
+				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
+				scanf( "%d", &rt );
+				printf( "\nWhich register [0,1,2,3,4,5] would is the destination (rd) register: ");
 				scanf( "%d", &rd );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the source (rs) register: ");
-				scanf( "%d", &rs );
-				printf( "Which register [0,1,2,3,4,5] is the shift amount (sa): ");
-				scanf( "%d", &sa );
-				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, sa, SRL_FUNC);
+				printf( "Enter right bit-shift amount (sa): ");
+				scanf( "%hd", &shamt );
+				printf( "The R-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, rd=%d, sa=%d, and function=%d\n", R_OPCODE, rs, rt, rd, shamt, SRL_FUNC);
 
+				s_registers[rd] = s_registers[rt] >> shamt;
 
+				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
-
+				shamt = 0;
 
 				break;
 
