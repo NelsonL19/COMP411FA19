@@ -131,9 +131,9 @@ int main( int argc, char** argv ) {
 
 			case SLL:
 
-				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
+				printf("\nWhich register [0,1,2,3,4,5] is the target (rt) register: ");
 				scanf( "%d", &rt );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the destination (rd) register: ");
+				printf( "Which register [0,1,2,3,4,5] would is the destination (rd) register: ");
 				scanf( "%d", &rd );
 				printf( "Enter left bit-shift amount (sa): ");
 				scanf( "%hd", &shamt );
@@ -150,9 +150,9 @@ int main( int argc, char** argv ) {
 
 			case SRL:
 				
-				printf( "Which register [0,1,2,3,4,5] is the target (rt) register: ");
+				printf("\nWhich register [0,1,2,3,4,5] is the target (rt) register: ");
 				scanf( "%d", &rt );
-				printf( "\nWhich register [0,1,2,3,4,5] would is the destination (rd) register: ");
+				printf("Which register [0,1,2,3,4,5] would is the destination (rd) register: ");
 				scanf( "%d", &rd );
 				printf( "Enter right bit-shift amount (sa): ");
 				scanf( "%hd", &shamt );
