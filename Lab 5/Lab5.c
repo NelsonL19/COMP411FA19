@@ -71,6 +71,13 @@ int main( int argc, char** argv ) {
 				printf( "The I-type message (in decimal) is: opcode=%d, rs=%d, rt=%d, and imm=%d\n", ADDI_OPCODE, rs, rt, reg_value );
 				s_registers[rt] = s_registers[rs] + reg_value;
 				printf( "The hex value of $s%d=%04X\n", rt, s_registers[rt] );
+
+				rd = 0;
+				rt = 0;
+				rs = 0;
+				shamt = 0;
+
+
 				break;
 
 			case AND:
@@ -89,6 +96,15 @@ int main( int argc, char** argv ) {
 				//sprintf(rtReg, "%4X", (s_registers[rt] + '0'));
 
 				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
+
+
+				
+				rd = 0;
+				rt = 0;
+				rs = 0;
+				shamt = 0;
+
+
 
 				break;
 
@@ -109,6 +125,12 @@ int main( int argc, char** argv ) {
 				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
 
+				rd = 0;
+				rt = 0;
+				rs = 0;
+				shamt = 0;
+
+
 				break;
 				
 
@@ -125,6 +147,15 @@ int main( int argc, char** argv ) {
 				s_registers[rd] = ~(s_registers[rs] |  s_registers[rt]);
 
 				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
+
+
+
+				rd = 0;
+				rt = 0;
+				rs = 0;
+				shamt = 0;
+
+				
 
 				break;
 				
@@ -143,6 +174,9 @@ int main( int argc, char** argv ) {
 
 				printf( "The hex value of $s%d=%04X\n", rd, s_registers[rd] );
 
+				rd = 0;
+				rt = 0;
+				rs = 0;
 				shamt = 0;
 
 				break;
