@@ -48,14 +48,14 @@ int main( int argc, char** argv ) {
 	while ( !exit ) {
 
 		printf( "\nlist of simulator operations:\n");
-		printf( "(0)\taddi operation\n");
+		printf( "\n(0)\taddi operation\n");
 		printf( "(1)\tand operation\n");
 		printf( "(2)\tor operation\n");
 		printf( "(3)\tnor operation\n");
 		printf( "(4)\tsll operation\n");
 		printf( "(5)\tsrl operation\n");
 		printf( "(6)\texit simulator\n");
-		printf( "Please select 0,1,2,3,4,5, or 6: ");
+		printf( "\nPlease select 0,1,2,3,4,5, or 6: ");
 		scanf( "%d", &operation );
 
 		switch ( operation ) {
@@ -155,7 +155,7 @@ int main( int argc, char** argv ) {
 				rs = 0;
 				shamt = 0;
 
-				
+
 
 				break;
 				
