@@ -28,69 +28,59 @@ int main() {
 
 	// TODO: add code here
 
-printf("%s\n", "Hello and welcome to the Matrix!");
+	printf("%s\n", "Hello and welcome to the Matrix!");
 
-while (m <= 0 || m > 10) {
-	printf("%s\n", "Give me an integer to represent the size of each matrices, from 1 to 10");
-	printf("%s", "m = ");
-	scanf("%d", &m);
-}
+	while (m <= 0 || m > 10) {
+		printf("%s\n", "Give me an integer to represent the size of each matrices, from 1 to 10");
+		printf("%s", "m = ");
+		scanf("%d", &m);
+	}
 
+	for (int i = 0; i < m*m; i++) {
+		printf("%s", "AA[" );
+		printf("%d", i);
+		printf("%s", "] = ");
+		scanf("%d", &AA[i]);
+		
 
-int passA;
-int passB;
+		printf("%s", "BB[" );
+		printf("%d", i);
+		printf("%s", "] = ");
+		scanf("%d", &BB[i]);
+	}
 
-for (int i = 0; i < m*m; i++){
-	printf("%s", "AA[" );
-	printf("%d", i);
-	printf("%s", "] = ");
-	AA[i] = scanf("%d", &passA);
-
-	printf("%s", "BB[" );
-	printf("%d", i);
-	printf("%s", "] = ");
-	BB[i] = scanf("%d", &passB);
-}
-
-if (m == 1) {
-	printf("\n");
-	CC[0] = passA * passB;
-	printf("%s", "CC[" );
-	printf("%d", 0);
-	printf("%s", "] = ");
-	printf("%d", CC[0]);
-
+	if (m == 1) {
+		printf("\n");
+		CC[0] = (AA[0] * BB[0]);
+		printf("%s", "CC[" );
+		printf("%d", 0);
+		printf("%s", "] = ");
+		printf("%d", CC[0]);
 		printf("\n");
 		return(0);
-}
-
-
-
-
-
-
-
-for (int i = 0; i < m-1; i++) {
-	for (int j = 0; j < m-1; j++) {
-		for (int k = 0; k < m; k++) {
-			product = product +(AA[i] * BB[k]);
-		}
-		CC[i] = CC[i] + AA[i+j] * BB[i+j+1];
 	}
-	CC[i] = product;	
-}
 
-printf("\n");
 
-for (int i = 0; i < m*m; i++){
-	printf("%s", "CC[" );
-	printf("%d", i);
-	printf("%s", "] = ");
-	printf("%d", CC[i]);
+	for (int i = 0; i < m*m; i++) {
+		for (int j = 0; j < m-1; j++) {
+			for (int k = 0; k < m-1; k++) {
+				product += (AA[i] * BB[k]) + (AA[k] * BB[j]);
+			}
+			CC[i] += product;
+		product = 0;
+		}
+
+	}
+
 	printf("\n");
 
-
-}
+	for (int i = 0; i < m*m; i++) {
+		printf("%s", "CC[" );
+		printf("%d", i);
+		printf("%s", "] = ");
+		printf("%d", CC[i]);
+		printf("\n");
+	}
 
 
 
