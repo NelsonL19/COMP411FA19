@@ -30,11 +30,14 @@ int main() {
 
 	printf("%s\n", "Hello and welcome to the Matrix!");
 
-	while (m <= 0 || m > 10) {
+	while (m <= 0 || m >= 10) {
 		printf("%s\n", "Give me an integer to represent the size of each matrices, from 1 to 10");
 		printf("%s", "m = ");
 		scanf("%d", &m);
 	}
+
+	printf("\n");
+
 
 	for (int i = 0; i < m*m; i++) {
 		printf("%s", "AA[" );
@@ -61,14 +64,20 @@ int main() {
 	}
 
 
-	for (int i = 0; i < m*m; i++) {
-		for (int j = 0; j < m-1; j++) {
-			for (int k = 0; k < m-1; k++) {
-				product += (AA[i] * BB[k]) + (AA[k] * BB[j]);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			for (int k = 0; k < m; k++) {
+				CC[k + i * m] = CC[k + i * m] + AA[j + m * i] * BB[k + m * j];
+
 			}
+
 			CC[i] += product;
-		product = 0;
+			product = 0;
+			
 		}
+
+		
+		
 
 	}
 
