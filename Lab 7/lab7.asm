@@ -7,7 +7,7 @@
    
 
       # You may add more variables here if you need to
-.data 0x0
+.data 
   product: .space 400
   mPrompt:	.asciiz "Give me an integer to represent the size of each matrices, from 1 to 10:\n"
   aaPrompt:	.asciiz "Enter AA Values:\n"
@@ -15,7 +15,7 @@
   ccPrompt:	.asciiz "CC Values are:\n"
   newline:	.asciiz "\n"
 
-.text 0x3000
+.text
 
 main:
 
@@ -41,18 +41,61 @@ main:
 
   addi	$v0, $0, 5			# system call 5 is for reading an integer
   syscall 				# integer value read is in $v0
-  add	$8, $0, $v0			# copy the width into $8
+  add	$8, $0, $v0			# copy the m value into $t0
+  
+  
+  blt $8 , $0 , sysclear
+  
+  
+  
+  
 
  addi 	$v0, $0, 4  			# system call 4 is for printing a string
-  la 	$a0, aaPrompt 			# address of mPrompt is in $a0
+  la 	$a0, aaPrompt 			# address of aaPrompt is in $a0
   syscall           			# print the string
   
-  
+ 
+ add $t1, $0, $0
+ 
  ALoop:
+ 
+ beq $t0, $t1, ALoope
+ 
+ #Loop goes here
+ 
+ addi	$v0, $0, 5			# system call 5 is for reading an integer
+ syscall 				# integer value read is in $v0
+ add	$t2, $0, $v0			# copy the width into $t2
+ 
+ sw $t2, AA($s2)
+
+ 
+ 
+ add $t2, $0, $0
+
+ 
+ addi $t1, $t1, 1
+ j ALoop
+ 
+ 
+ 
+ ALoope:
+ 
+ 
  
  
  
  BLoop:
+ 
+ 
+ 
+ 
+ 
+ BLoope:
+ 
+ 
+ 
+ 
  
  MultiLoopi:
   
@@ -62,6 +105,15 @@ main:
 
  CLoop:
 
+
+
+
+
+sysclear:
+addi 	$v0, $0, 4  			# system call 4 is for printing a string
+  la 	$a0, newline 			# address of mPrompt is in $a0
+  syscall           			# print the string
+  j exit
 
 exit:                     # this is code to terminate the program -- don't mess with this!
   addi $v0, $0, 10      	# system call code 10 for exit
