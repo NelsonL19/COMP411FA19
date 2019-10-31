@@ -19,6 +19,7 @@
 
 main:
 
+#Professor Munsell, I'm sorry but this is as far as I got :( I tried to go to Ethan's Office Hours on Wed
 
 #------- INSERT YOUR CODE HERE for main -------
 #
@@ -44,10 +45,11 @@ main:
   add	$8, $0, $v0			# copy the m value into $t0
   
   
-  blt $8 , $0 , sysclear
-  
-  
-  
+  blt $8 , $0 , main
+  bgt $8 , 10, main
+ 
+  mult $t0, $t0 #m*m
+  mflo $t1	#m*m is being saved into t1
   
 
  addi 	$v0, $0, 4  			# system call 4 is for printing a string
@@ -55,29 +57,23 @@ main:
   syscall           			# print the string
   
  
- add $t1, $0, $0
+ 
+ la $a2, AA
+ la $a3, BB
+ add $a1, $0, $0
  
  ALoop:
- 
- beq $t0, $t1, ALoope
- 
- #Loop goes here
+ beq $t1, $a1, ALoope 
  
  addi	$v0, $0, 5			# system call 5 is for reading an integer
  syscall 				# integer value read is in $v0
- add	$t2, $0, $v0			# copy the width into $t2
+ add	$t2, $0, $v0			# copy the value into $t2
  
- sw $t2, AA($s2)
-
+ lb $s1, 0($a2) 
+ sb $t2, 0($a1)
  
- 
- add $t2, $0, $0
-
- 
- addi $t1, $t1, 1
+ addi $a1 $a1, 1
  j ALoop
- 
- 
  
  ALoope:
  
@@ -109,11 +105,8 @@ main:
 
 
 
-sysclear:
-addi 	$v0, $0, 4  			# system call 4 is for printing a string
-  la 	$a0, newline 			# address of mPrompt is in $a0
-  syscall           			# print the string
-  j exit
+
+  
 
 exit:                     # this is code to terminate the program -- don't mess with this!
   addi $v0, $0, 10      	# system call code 10 for exit
