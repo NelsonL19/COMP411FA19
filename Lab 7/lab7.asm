@@ -60,6 +60,7 @@ main:
  
  la $a2, AA
  la $a3, BB
+ 
  add $a1, $0, $0
  
  ALoop:
@@ -69,8 +70,9 @@ main:
  syscall 				# integer value read is in $v0
  add	$t2, $0, $v0			# copy the value into $t2
  
- lb $s1, 0($a2) 
- sb $t2, 0($a1)
+ sll $t2, $t2, 2
+ add $t5, $a2, $t2
+ sw $t5, 0($a2)
  
  addi $a1 $a1, 1
  j ALoop
