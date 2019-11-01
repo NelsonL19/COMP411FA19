@@ -4,7 +4,7 @@
 char pattern[32] = {0};
 
 // function prototype
-void bingen( unsigned int n, unsigned int N );
+void bingen(unsigned int n, unsigned int N );
 
 
 int main( int argc, char** argv ) {
