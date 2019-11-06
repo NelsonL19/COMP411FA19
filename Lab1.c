@@ -7,7 +7,8 @@ int main( int argc, char** argv ) {
     printf("2: Rectangle\n");
     printf("3: Triangle\n");
     
-    
+
+
 
     int i;
     scanf("%d", &i);
